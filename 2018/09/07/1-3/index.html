@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yuanxiru.github.io">
-  <title>Archives: 2018/9 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="#第一章 js简介   js的实现（1）核心ECMAScript              提供核心语言功能（2）文档对象模型 DOM            提供访问和操作网页内容的方法和接口（3）浏览器对象模型 BOM        提供与浏览器交互的方法和接口  DOM：   1）针对XML但经过扩展用于HTML的应用程序编程接口API可轻松删除、添加、替换、修改任何节点 2）将整个页面映射为">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yuanxiru.github.io/archives/2018/09/index.html">
+<meta property="og:url" content="http://yuanxiru.github.io/2018/09/07/1-3/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#第一章 js简介   js的实现（1）核心ECMAScript              提供核心语言功能（2）文档对象模型 DOM            提供访问和操作网页内容的方法和接口（3）浏览器对象模型 BOM        提供与浏览器交互的方法和接口  DOM：   1）针对XML但经过扩展用于HTML的应用程序编程接口API可轻松删除、添加、替换、修改任何节点 2）将整个页面映射为">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-07T02:37:31.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#第一章 js简介   js的实现（1）核心ECMAScript              提供核心语言功能（2）文档对象模型 DOM            提供访问和操作网页内容的方法和接口（3）浏览器对象模型 BOM        提供与浏览器交互的方法和接口  DOM：   1）针对XML但经过扩展用于HTML的应用程序编程接口API可轻松删除、添加、替换、修改任何节点 2）将整个页面映射为">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,64 +154,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-1-3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#第一章 js简介 </p>
+<ol>
+<li>js的实现<br>（1）核心ECMAScript              提供核心语言功能<br>（2）文档对象模型 DOM            提供访问和操作网页内容的方法和接口<br>（3）浏览器对象模型 BOM        提供与浏览器交互的方法和接口</li>
+</ol>
+<p>DOM：   1）针对XML但经过扩展用于HTML的应用程序编程接口API<br>可轻松删除、添加、替换、修改任何节点<br> 2）将整个页面映射为一个多层节点结构</p>
+<p>#第二章  在HTML中使用JS<br>   ● 使用<script>元素的方法<br>1、<script  type="text/javascript"><br>…….<br>      </script><br>2、<script type="text/javascript" src="....."></script><br>嵌入的代码将会被忽略<br>  ● 将js放在<body>元素中页面内容的后面<br>  ● defer=”defer”：立即下载，延时执行，所以可放在<head>之间<br>  ● async=”async”：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容<br>  ● ？文档模式</head></body></p>
+<p>#第三章   基本概念</p>
+<ol>
+<li>区分大小写</li>
+<li>标识符（变量、函数、属性的名字、函数的参数）<br>1）函数名不能使用关键字、保留字、true、false、null<br>2）第一个字符必须是一个字母或下划线或$<br>3）第一个字母小写，剩下的每个单词首字母大写<br>3.严格模式：”use  strict”<br>4、变量<br>5、数据类型（undefined  null  string  boolean  number   object）<br>1）typeof操作符：检测变量的数据类型（typeof null    object）<br>2）undefined：区分空对象指针与未经初始化的变量<br>3）null：表示一个空指针对象，若定义的变量准备在将来用于保存对象，最好将该变量初始                                                                                     化为null<br>4）boolean（布尔值）：true、false<br>转型函数 Boolean()<br>5）number<br>8进制：第一位为0，在严格模式下无效<br>16进制：前两位为0x<br>进行算术计算时，数值将转换为十进制</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/yuanxiru.github.io/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/yuanxiru.github.io/2018/09/07/1-3/" class="archive-article-date">
-  	<time datetime="2018-09-07T02:36:50.167Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yuanxiru.github.io/2018/09/07/1-3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/yuanxiru.github.io/2018/09/07/21-23/" class="archive-article-date">
-  	<time datetime="2018-09-07T02:33:14.984Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+  
+<nav id="article-nav">
+  
+  
+    <a href="/yuanxiru.github.io/2018/09/07/21-23/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,8 +321,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
