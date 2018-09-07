@@ -159,16 +159,9 @@
       
         <p>#第一章 js简介 </p>
 <ol>
-<li>js的实现<br>（1）核心ECMAScript              提供核心语言功能<br>（2）文档对象模型 DOM            提供访问和操作网页内容的方法和接口<br>（3）浏览器对象模型 BOM        提供与浏览器交互的方法和接口</li>
+<li>js的实现</li>
 </ol>
-<p>DOM：   1）针对XML但经过扩展用于HTML的应用程序编程接口API<br>可轻松删除、添加、替换、修改任何节点<br> 2）将整个页面映射为一个多层节点结构</p>
-<p>#第二章  在HTML中使用JS<br>   ● 使用<script>元素的方法<br>1、<script  type="text/javascript"><br>…….<br>      </script><br>2、<script type="text/javascript" src="....."></script><br>嵌入的代码将会被忽略<br>  ● 将js放在<body>元素中页面内容的后面<br>  ● defer=”defer”：立即下载，延时执行，所以可放在<head>之间<br>  ● async=”async”：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容<br>  ● ？文档模式</head></body></p>
-<p>#第三章   基本概念</p>
-<ol>
-<li>区分大小写</li>
-<li>标识符（变量、函数、属性的名字、函数的参数）<br>1）函数名不能使用关键字、保留字、true、false、null<br>2）第一个字符必须是一个字母或下划线或$<br>3）第一个字母小写，剩下的每个单词首字母大写<br>3.严格模式：”use  strict”<br>4、变量<br>5、数据类型（undefined  null  string  boolean  number   object）<br>1）typeof操作符：检测变量的数据类型（typeof null    object）<br>2）undefined：区分空对象指针与未经初始化的变量<br>3）null：表示一个空指针对象，若定义的变量准备在将来用于保存对象，最好将该变量初始                                                                                     化为null<br>4）boolean（布尔值）：true、false<br>转型函数 Boolean()<br>5）number<br>8进制：第一位为0，在严格模式下无效<br>16进制：前两位为0x<br>进行算术计算时，数值将转换为十进制</li>
-</ol>
-
+        
       
 
       
@@ -215,84 +208,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#第20章，JSON<br>JSON（JavaScript Object Notation，JavaScript对象表示法），是JavaScript的一个严格的子集。<br>JSON可表示一下三种类型值：<br>简单值：字符串，数值，布尔值，null，不支持js特殊值：undefined<br>对象：一组无序的键值对<br>数组：一组有序的值的列表<br>不支持变量，函数或对象实例<br>注：JSON的字符串必须使用双引号，这是与JavaScript字符串最大的区别<br>对象<br>{<br>     “name”:”Nicholas”,<br>     “age”:20<br>}<br>注：JSON中的对象要求给属性加引号<br>与JavaScript不同，没有声明变量，末尾不用分号<br>对象嵌入：<br>复制代码<br>{<br>    “name”:”Nicholas”,<br>    “age”:19,<br>    “school”:{<br>        “name”:”school”,<br>        “location”:”location”<br>    }<br>}<br>复制代码<br>数组<br>采用js的数组字面量形式：<br>[21,”hi”,true]<br>注：JSON数组也没有分号和变量<br>数组嵌入<br>复制代码<br>[<br>    {<br>        “title”:”array”,<br>        “author”:”author”<br>    },<br>    [<br>        “title”:”book”,<br>        “author”:{<br>            “nameOne”,<br>            “nameTwo”<br>        }<br>    ]<br>]<br>复制代码<br>JSON对象<br>早期的JSON解析器基本上使用的是js的eval函数。ECMAScript5定义了全局对象JSON，支持的浏览器：IE8+，Firefox3.5+，Safari4+，Chrome，Opera10.5+。<br>JSON对象的两个方法：stringify，parse。最简单情况，分别用于把js对象序列化为JSON字符串和把JSON字符串解析成原生js值<br>复制代码<br>var book = {<br>    title:”title”,<br>    author:[<br>        “Nicholas C. Zakas”<br>    ],<br>    edition:3,<br>    year:2011<br>};<br>var jsonText = JSON.stringify(book);<br>alert(jsonText);          //{“title”:”title”,”author”:[“Nicholas C. Zakas”],”edition”:3,”year”:2011}<br>复制代码<br>注：默认情况下JSON.stringify输出的JSON字符串不包含任何空格字符或缩进。<br>序列化时所有函数和原型成员都会被忽略，值为undefined的属性也会被跳过。<br>JSON.parse过程相反，传递的字符串不是有效JSON，会抛出错误<br>序列化选项<br>JSON.stringify还可以接收另外两个参数：1、过滤器，可以是数组，也可以是函数。2、选项，表示是否在JSON字符串保留缩进<br>1、过滤结果<br>若过滤器是数组，则JSON.stringify结果将只包含数组列出的元素<br>复制代码<br>var book = {<br>    title:”title”,<br>    author:[<br>        “Nicholas C. Zakas”<br>    ],<br>    edition:3,<br>    year:2011<br>};<br>var jsonText = JSON.stringify(book,[“title”,”edition”]);     //{“title”:”title”,”edition”:3}<br>复制代码<br>如果是函数，则又有不同</p>
-<p>复制代码<br>var jsonText = JSON.stringify(book,function(key,value){<br>    switch(key){<br>        case “author”:<br>            return value.join(“,”);</p>
-<pre><code>    case &quot;year&quot;:
-        return 5000;
-
-    case &quot;edition&quot;:
-        return undefined;
-    default:
-        return value;
-}
-</code></pre><p>});                                   //{“title”:”title”,”author”:”Nicholas C. Zakas”,”year”:5000}<br>复制代码<br>2、字符串缩进<br>JSON.stringify第三个参数用于控制缩进和空白符，若是数值，表示每个级别的缩进空格数<br>复制代码<br>var jsonText = JSON.stringify(book,null,4);<br>//结果：<br>{<br>    “title”: “title”,<br>    “author”: [<br>        “Nicholas C. Zakas”<br>    ],<br>    “edition”: 3,<br>    “year”: 2011<br>}<br>复制代码<br>注：最大缩进空格数为10，大于10的数值全部转为10<br>若缩进参数是字符串，则将被用于缩进字符<br>复制代码<br>{</p>
-<ul>
-<li>-“title”: “title”,</li>
-<li>-“author”: [</li>
-<li><ul>
-<li><ul>
-<li>-“Nicholas C. Zakas”</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>-],</li>
-<li>-“edition”: 3,</li>
-<li>-“year”: 2011<br>}<br>复制代码<br>注：最大缩进字符数不能超过10，超过的将只显示前10个字符<br>3、toJSON方法<br>toJSON方法可以作为函数过滤器的补充，理解序列化顺序：<br>1、如果存在toJSON方法，而且能通过它取得有效值，调用该方法，否则返回对象本身<br>2、若提供了第二个参数，应用这个函数过滤器，传入函数过滤器的值是第一步返回值<br>3、对第二步返回值进行序列化<br>4、若提供了第三个参数，执行相应格式化<br>解析选项<br>JSON.parse也接收另一个参数，是一个函数，将在每个键值对上调用。若返回结果为undefined，表示删除该值，返回其他值，则将该值插入到结果。<br>复制代码<br>var book = {<br>  title:”title”,<br>  author:[<pre><code>&quot;Nicholas C. Zakas&quot;
-</code></pre>  ],<br>  edition:3,<br>  year:2011,<br>  releaseDate:new Date(2011,11,1)<br>};</li>
-</ul>
-<p>var jsonText = JSON.stringify(book);<br>var bookCopy = JSON.parse(jsonText,function(key,value){<br>    if(key == “releaseDate”){<br>        return new Date(value);<br>    }else{<br>        return value;<br>    }<br>});</p>
-<p>alert(bookCopy.releaseDate.getFullYear());               //2011<br>复制代码</p>
-<p>#第21章，Ajax和Comet<br>Ajax核心是XMLHttpRequest对象，能够以异步的方式从服务器获取更多信息，意味着用户单击后，可以不必刷新页面也能取得数据<br>XMLHttpRequest<br>IE7+，Firefox，Opera，Chrome，Safari都支持原生的XHR对象，创建对象：<br>var xhr = new XMLHttpRequest();<br>浏览器兼容<br>复制代码<br>function createXHR(){<br>    if(typeof XMLHttpRequest != “undefined”){<br>        return new XMLHttpRequest;<br>    }else if(typeof ActiveXObject != “undefined”){<br>        if(typeof arguments.callee.activeXString != “string”){<br>            var versions = [“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp.3.0”,”MSXML2.XMLHttp”],i,len;<br>            for(i=0,len=versions.length;i &lt; len;i++){<br>                try{<br>                    new ActiveXObject(versions[i]);<br>                    arguments.callee.activeXString = versions[i];<br>                    break;<br>                }catch(ex){<br>                    //跳过<br>                }<br>            }<br>        }<br>        return new ActiveXObject(arguments.callee.activeXString);<br>    }else{<br>        throw new Error(“No XHR Object available”);<br>    }<br>}<br>//使用示例<br>var xhr = createXHR();<br>复制代码<br>XHR用法<br>第一个方法：open，接收3个参数：<br>1、要发送的请求的类型（“get”，“post”）<br>2、请求的URL<br>3、表示是否异步发送请求的布尔值<br>xhr.open(“get”,”example.php”,false);<br>说明：1、url相对于执行代码的当前页面（也可以使用绝对路径），2、并不会真正发送请求，而是启动一个请求以备发送<br>使用send方法发送：<br>xhr.send(null);<br>send接受一个参数：作为请求主体发送的数据，不需要则要传入null。响应的数据会被填充到XHR对象的属性。属性简介：<br>responseText：作为响应主体被返回的文本<br>responseXML：响应内容类型若是”text/xml”或”application/xml”，将保存包含着响应数据的XML DOM文档<br>status：响应的HTTP状态<br>statusText：HTTP状态说明<br>接到响应后，首先检查status属性，可以将HTTP状态码200,作为成功的标志，状态码304表示请求资源并没有修改，可以直接使用浏览器中缓存的版本。<br>复制代码<br>xhr.open(“get”,”example.php”,false);               //同步请求<br>xhr.send(null);</p>
-<p>if((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304){<br>    alert(xhr.resopnseText);<br>}else{<br>    alert(“Request was unsuccessful: “+xhr.status);<br>}<br>复制代码<br>异步请求，检查readyState属性，表示请求/响应过程的当前活动阶段，取值：<br>0：未初始化，尚未调用open<br>1：启动，已调用open，未调用send<br>2：发送，已调用send，未收到响应<br>3：接收，已接收部分数据<br>4：完成，接收全部数据，已经可以在客户端使用了<br>必须在调用open之前指定onreadystatechange事件处理程序才能确保跨浏览器兼容性：<br>复制代码<br>var xhr = createXHR();<br>xhr.onreadystatechange = function(){                         //DOM0级方法，不是所有浏览器都支持DOM2级方法<br>    if(xhr.readyState == 4){<br>        if((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304){<br>            alert(xhr.resopnseText);<br>        }else{<br>            alert(“Request was unsuccessful: “+xhr.status);<br>        }<br>    }<br>};<br>xhr.open(“get”,”example.php”,true);                         //异步请求<br>xhr.send(null);<br>复制代码<br>在接收到响应之前还可以调用abort方法来取消异步请求：</p>
-<p>xhr.abort();<br>HTTP头部信息<br>默认情况下，发送XHR请求的同时，还会发送下列头部信息<br>Accept：浏览器能够处理的内容类型<br>Accept-Charset：浏览器能够显示的字符集<br>Accept-Encoding：浏览器能够处理的压缩编码<br>Accept-Language：浏览器当前设置语言<br>Connection：浏览器与服务器之间的链接类型<br>Cookie：当前页面设置的热河Cookie<br>Host：发出请求的页面所在的域<br>Referer：发出请求的页面的URI。注：HTTP规范把这个头部字段拼错了，应该是referrer<br>User-Agent：浏览器的用户代理字符串<br>以上列出的基本上是所有浏览器都会发送的。可以通过setRequestHeader方法设置自定义的请求头部信息。接收两个参数：头部字段名称，头部字段值，要成功发送请求头部信息，必须在调用open方法之后，调用send方法之前调用setRequestHeader<br>复制代码<br>var xhr = createXHR();<br>xhr.onreadystatechange = function(){<br>    if(xhr.readyState == 4){<br>        if((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304){<br>            alert(xhr.resopnseText);<br>        }else{<br>            alert(“Request was unsuccessful: “+xhr.status);<br>        }<br>    }<br>};<br>xhr.open(“get”,”example.php”,true);<br>xhr.setRequestHeader(“MyHeader”,”MyValue”);<br>xhr.send(null);<br>复制代码<br>调用XHR对象的getRequestHeader方法并传入头部字段名称，可以取得相应头部信息，调用getAllResponseHeaders()方法则可以获得一个包含所有头部信息的长字符串。<br>GET请求<br>使用GET请求经常发生的一个错误，就是查询字符串的格式有问题，查询字符串的每个参数的名称和值都必须使用encodeURIComponent()（第五章提到的通用资源标识符编码）进行编码，然后才能放到URL末尾，而且所有键-值对都必须使用和号（&amp;）分隔。<br>POST请求<br>通常用于向服务器发送应该保存的数据，应该把数据作为请求的主体提交，可以包含非常多的数据，且格式不限。<br>若需要将页面中的表单数据进行序列化，然后通过XHR放到服务器，则可以使用14章的serialize函数来创建字符串：<br>复制代码<br>function submitData(){<br>    var xhr = createXHR();<br>    xhr.onreadystatechange = function(){<br>        if(xhr.readyState == 4){<br>            if((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304){<br>                alert(xhr.resopnseText);<br>            }else{<br>                alert(“Request was unsuccessful: “+xhr.status);<br>            }<br>        }<br>    };</p>
-<pre><code>xhr.open(&quot;post&quot;,&quot;postExample.php&quot;,true);
-xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);
-var form = document.getElementById(&quot;user-info&quot;);
-xhr.send(serialize(form));
-</code></pre><p>}<br>复制代码<br>示例php文件：</p>
-<p>复制代码<br>&lt;?php<br>    header(“Content-Type:text/plain”);<br>    echo &lt;&lt;&lt;EOF<br>    Name:{$_POST[‘user-name’]}<br>    Email:{$_POST[‘user-email’]}<br>    EOF;<br>?&gt;<br>复制代码<br>如不设置Content-Type头部信息，要访问同样信息必须借助$HTTP_RAW_POST_DATA<br>XMLHttpRequest2级<br>定义FormData类型，为序列化表单以及创建与表单格式相同的数据（用于通过XHR传输）提供了便利。<br>方法1、<br>var data = new FormData();<br>data.append(“name”,”Nicholas”);          //接收两个参数：键，值<br>方法2、</p>
-<p>var data = new FormData(document.forms[0]);     //直接使用表单元素<br>方法3、</p>
-<p>var form = document.getElementById(“user-info”);<br>xhr.send(new FormData(form));<br>支持的浏览器：Firefox4+，Safari5+，Chrome，Android3+，WebKit<br>超时设定<br>IE8为XHR添加了timeout属性，表示请求等待多少毫秒之后终止，在写作JavaScript高级程序设计第三版时，IE8+仍然是唯一支持超时设定的浏览器<br>overrideMimeType方法<br>Firefox最早引入overrideMimeType方法，用于重写XHR响应的MIME类型。因为返回响应的MIME类型决定了XHR如何处理它。<br>支持的浏览器Firefox，Safari4+，Opera10.5，Chrome<br>进度事件<br>Progress Events规范是W3C的一个工作草案，定义了与客户端服务器通信有关的事件，最早针对XHR操作，目前也被其他API借鉴，6个进度事件：<br>loadstart：接收到响应数据第一个字节触发<br>progress：接收响应期间持续不断地触发<br>error：请求错误触发<br>abort：调用abort方法触发<br>load：接收到完整的响应数据触发<br>loadend：通信完成或触发error，abort，load事件后触发<br>跨源资源共享<br>IE对CORS的支持<br>CORS（Cross-Origin Resource Sharing，跨源资源共享）是W3C的一个工作草案<br>IE8中引入了XDR（XDomainRequest）类型，与XHR类似，但能实现安全可靠的跨域通信。与XHR不同：<br>1、cookie不会随请求发送，也不会随请求返回<br>2、只能设置头部信息中的Content-Type<br>3、不能访问响应头部信息<br>4、只支持GET和POST请求<br>使用方法，也是创建一个XDomainRequest实例，调用open，调用send，open方法只接受两个参数，请求类型，URL。所有请求都是异步。<br>其他浏览器对CORS的支持<br>Firefox3.5+，Safari4+，Chrome，ios版Safari，Android平台中的WebKit都通过XHR对象实现了对CORS的原生支持。<br>限制：<br>1、不能使用setRequestHeader<br>2、不能发送和接收cookie<br>3、调用getAllResponseHeaders会返回空字符串<br>其他跨域技术<br>图像ping<br>JSONP<br>Comet<br>Comet一种更高级的Ajax技术。Ajax是从页面向服务器请求数据的技术，Comet是服务器向页面推送数据的技术。能够让信息近乎实时的被推送到页面上。<br>服务器发送事件<br>SSE（Server-Sent Events，服务器发送事件）是围绕只读Comet交互推出的API或者模式<br>Web Socket<br>使用标准的HTTP服务器无法实现Web Socket，只有支持这种协议的专门服务器才能工作。<br>支持浏览器：Firefox6+，Safari5+，Chrome，ios4+版Safari<br>1、Web Socket API<br>要创建Web Socket，先实例一个WebSocket对象并传入要连接的URL<br>var socket = new WebSocket(“ws://<a href="http://www.example.com/server.php&quot;)" target="_blank" rel="noopener">www.example.com/server.php&quot;)</a>;<br>注：必须传入绝对URL<br>表示当前状态的readyState属性：<br>WebSocket.OPENING(0)：正在建立连接<br>WebSocket.OPEN(1)：已建立连接<br>WebSocket.CLOSING(1)：正在关闭连接<br>WebSocket.CLOSE(3)：已关闭<br>关闭Web Socket连接：<br>socket.close();<br>2、发送和接收数据<br>socket.send(“hello world”);          //任意字符串<br>只能发送纯文本数据，发杂结构的数据要经过序列化。<br>3、其他事件<br>open：成功建立连接触发<br>error：发生错误触发，连接不能持续<br>close：连接关闭触发</p>
-<p>#第23章，离线应用与客户端存储<br>离线检测<br>H5定义了navigator.onLine属性，true表示能上网。<br>H5还定义了两个事件：online（离线变在线触发），offline（在线变离线触发），在window对象上触发。<br>应用缓存<br>要在缓存中保存数据，可以使用描述文件<br>数据存储<br>HTTP Cookie，通常叫做cookie。<br>1、限制<br>在性质上是绑定在特定域名下的。<br>2、cookie的构成<br>cookie由浏览器保存的以下几块信息构成<br>名称：唯一确定cookie的名称，不缺分大小写，实践中最好看成区分大小写。<br>值：储存在cookie中的字符串值，必须被URI编码<br>域：对于哪个域有效<br>路径：对于域中的那个路径，应该向服务器发送cookie<br>失效时间：cookie应该被删除的时间<br>安全标志：指定后，cookie只有在使用ssl连接时才发送到服务器<br>3、js中的cookie<br>在js中处理cookie有些复杂，因为众所周知的蹩脚的接口，即BOM的document.cookie属性<br>基本的cookie操作：读，写，删，在CookieUtil对象表示：<br>复制代码<br>var socket = new WebSocket(“ws://<a href="http://www.example.com/server.php&quot;)" target="_blank" rel="noopener">www.example.com/server.php&quot;)</a>;<br>var CookieUtil = {<br>    get:function(name){<br>        var cookieName = encodeURIComponent(name) + “=” ,<br>            cookieStart = document.cookie.indexOf(cookieName),<br>            cookieValue = null;</p>
-<pre><code>    if(cookieStart &gt; -1){
-        var cookieEnd = document.cookie.indexOf(&quot;;&quot;,cookieStart);
-        if(cookieEnd == -1){
-            cookieEnd = document.cookie.length;
-        }
-        cookieValue = decodeURIComponent(document.cookie.substring(cookieStart+cookieName.length,cookieEnd));
-    }
-
-    return cookieValue;
-},
-set:function(name,value,expires,path,domain,secure){
-    var cookieText = encodeURIComponent(name) + &quot;=&quot; + encodeURIComponent(value);
-
-    if(expires instanceof Date){
-        cookieText += &quot;; expires=&quot; + expires.toGMTString();
-    }
-    if(path){
-        cookieText += &quot;; path=&quot; + path;
-    }
-    if(domain){
-        cookieText =+ &quot;; domain=&quot; + domain;
-    }
-    if(secure){
-        cookieText += &quot;; secure=&quot; + secure;
-    }
-    document.cookie = cookieText;
-},
-unset:function(name,path,domain,secure){
-    this.set(name,&quot;&quot;,new Date(0),path,domain,secure);
-}
-</code></pre><p>};<br>复制代码<br>使用示例：</p>
-<p>复制代码<br>//设置cookie<br>CookieUtil.set(“name”,”Nicholas”);<br>CookieUtil.set(“book”,”Professional JavaScript”);</p>
-<p>//读取<br>alert(CookieUtil.get(“name”));  //“Nicholas”<br>alert(CookieUtil.get(“book”));  //Professional JavaScript</p>
-<p>//删除<br>CookieUtil.unset(“name”);<br>CookieUtil.unset(“book”);</p>
-<p>//设置cookie，包括它的路径、域、失效日期<br>CookieUtil.set(“name”,”Nicholas”,”/books/projs”,”<a href="http://www.wrox.com&quot;,new" target="_blank" rel="noopener">www.wrox.com&quot;,new</a> Date(“January 1,2010”));</p>
-<p>//删除刚设置的cookie<br>CookieUtil.unset(“name”,”/books/projs”,”<a href="http://www.wrox.com&quot;)" target="_blank" rel="noopener">www.wrox.com&quot;)</a>;</p>
-<p>//设置安全cookie<br>CookieUtil.set(“name”,”Nicholas”,null,null,null,true);<br>复制代码<br>4、子cookie<br>为了绕开浏览器的单域名下cookie数量限制<br>5、关于cookie的思考<br>尽量少存储信息，不存敏感信息<br>Web存储机制<br>Web Storage目的是克服由cookie带来的一些限制。主要目的：<br>1、提供一种cookie之外存储会话数据的途径；<br>2、提供一种存储大量可以跨会话存在的数据的机制<br>Web Storage包含了两种对象定义：sessionStorage，globalStorage，支持浏览器：IE8+，Firefox3.5+，Chrome4+，Opera10.5+<br>1、Storage类型<br>注：Storage类型只能存字符串，不是字符串的会被转换成字符串<br>2、sessionStorage对象<br>数据值保存到浏览器关闭<br>3、globalStorage对象<br>目的：跨越会话存储数据，有特定的访问限制。<br>数据保留到js删除或用户清除浏览器缓存<br>4、localStorage对象<br>要访问同一个localStorage对象，页面必须来自同一域名（子域名无效），使用同一种协议，在同一个端口<br>数据保留到js删除或用户清除浏览器缓存<br>5、storage事件<br>对Storage对象的任何修改，都会在文档上触发storage事件</p>
-
+        <p>#第20章，JSON<br>JSON（JavaScript Object Notation，JavaScript对象表示法），是JavaScript的一个严格的子集。<br>
+        
       
 
       
